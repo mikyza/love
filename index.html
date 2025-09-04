@@ -1,0 +1,42 @@
+Here you go—save this as, say, `splash.html`.
+Replace `your-image.jpg` with your actual image file. It will fill any screen and redirect to `inde.html` after 4 seconds.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>love you Alice</title>
+
+  <!-- Redirect after 4 seconds (fallback for no-JS) -->
+  <meta http-equiv="refresh" content="4;url=inde.html" />
+
+  <style>
+    /* Reset and full-viewport canvas */
+    html, body { height: 100%; margin: 0; }
+    .bg {
+      position: fixed;
+      inset: 0;
+      /* Black background + image centered and covering all devices */
+      background: #000 url("pib.jpg") center / cover no-repeat;
+      /* Prevent scrollbars */
+      overflow: hidden;
+    }
+    /* Optional: fade-in */
+    .bg { opacity: 0; animation: fade 400ms ease-out forwards; }
+    @keyframes fade { to { opacity: 1; } }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <script>
+    // JS redirect (primary). Uses replace() so splash won't stay in history.
+    setTimeout(function () {
+      location.replace("inde.html");
+    }, 4000);
+  </script>
+</body>
+</html>
+```
